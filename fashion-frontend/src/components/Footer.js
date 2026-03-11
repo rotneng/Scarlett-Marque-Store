@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Instagram, Facebook, MessageCircle } from "lucide-react"; // MessageCircle for WhatsApp
+// FIXED: Changed 'lucide-material' to 'lucide-react'
+import { Instagram, Facebook, MessageCircle, Music2 } from "lucide-react"; 
 
 const Footer = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -84,12 +85,13 @@ const Footer = () => {
         <div style={styles.brandSection}>
           <div style={styles.logoText}>SCARLETT MARQUE</div>
           <div style={styles.addressText}>
-            123 Fashion Avenue, Design District
+            Longwa Phase 3, Before Solomon Lar Amusement Park, House 11, Shop
+            No. 3, Jos, Nigeria
             <br />
             Lagos, Nigeria
             <br />
             <span style={{ marginTop: "10px", display: "block" }}>
-              contact@scarlettmarque.com
+              thescarlettmarqueNg@gmail.com
             </span>
           </div>
         </div>
@@ -109,7 +111,7 @@ const Footer = () => {
           <div style={styles.heading}>Follow The Label</div>
           <div style={styles.socialContainer}>
             <a
-              href="https://instagram.com"
+              href="https://instagram.com/_thescarlettmarque?igsh=bjF6ZmR3OW80YzZ2"
               target="_blank"
               rel="noreferrer"
               style={styles.socialIcon}
@@ -117,15 +119,25 @@ const Footer = () => {
               <Instagram size={22} />
             </a>
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/share/1Dq3x3bYRA/?mibextid=wwXIfr&u=https%3A%2F%2Fwww.facebook.com%2F_thescarlettmarque%2F"
               target="_blank"
               rel="noreferrer"
               style={styles.socialIcon}
             >
               <Facebook size={22} />
             </a>
+            {/* TikTok Link */}
             <a
-              href="https://wa.me/yourphonenumber"
+              href="https://tiktok.com/@scarlettmarqueng"
+              target="_blank"
+              rel="noreferrer"
+              style={styles.socialIcon}
+            >
+              <Music2 size={22} />
+            </a>
+            {/* WhatsApp Link */}
+            <a
+              href="https://wa.me/2349036830073"
               target="_blank"
               rel="noreferrer"
               style={styles.socialIcon}

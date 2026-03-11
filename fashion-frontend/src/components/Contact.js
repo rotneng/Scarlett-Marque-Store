@@ -12,20 +12,30 @@ const Contact = () => {
   const contactLinks = [
     {
       label: "WhatsApp",
-      value: "Digital Concierge",
-      url: "https://wa.me/yournumber",
+      value: "Scarlett Marque",
+      url: "https://wa.me/+2349036830073",
     },
     {
       label: "Instagram",
-      value: "@scarlettmarque",
-      url: "https://instagram.com/scarlettmarque",
+      value: "@_thescarlettmarque",
+      url: "https://www.instagram.com/_thescarlettmarque?igsh=bjF6ZmR3OW80YzZ2",
     },
     {
       label: "Email",
-      value: "contact@scarlettmarque.com",
-      url: "mailto:contact@scarlettmarque.com",
+      value: "thescarlettmarqueNg@gmail.com",
+      url: "mailto:thescarlettmarqueNg@gmail.com",
     },
-    { label: "Phone", value: "+234 XXX XXX XXXX", url: "tel:+234XXXXXXXXX" },
+     {
+      label: "Facebook",
+      value: "@_thescarlettmarque",
+      url: "https://www.facebook.com/share/1Dq3x3bYRA/?mibextid=wwXIfr&u=https%3A%2F%2Fwww.facebook.com%2F_thescarlettmarque%2F",
+    },
+     {
+      label: "TikTok",
+      value: "@scarlettmarque",
+      url: "https://www.tiktok.com/@scarlettmarqueng?_t=ZM-8xfAh5tVWo4&_r=1",
+    },
+    { label: "Phone", value: "+234 903 683 0073", url: "tel:+2349036830073" },
   ];
 
   const styles = {
