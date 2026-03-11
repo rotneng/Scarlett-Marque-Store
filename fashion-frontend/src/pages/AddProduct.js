@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { X, UploadCloud } from "lucide-react";
+import { UploadCloud } from "lucide-react";
 
 const AddProduct = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);

@@ -36,15 +36,36 @@ const Staff = () => {
   ];
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/staff")
-      .then((res) => {
-        setStaff(res.data.length > 0 ? res.data : sampleStaff);
-      })
-      .catch(() => {
+    const fetchStaff = async () => {
+      // Try Render first, then Localhost
+      const urls = [
+        "https://scarlett-marque-store.onrender.com/api/staff",
+        "http://localhost:5000/api/staff",
+      ];
+
+      let dataFetched = false;
+
+      for (const url of urls) {
+        try {
+          const res = await axios.get(url);
+          if (res.data && res.data.length > 0) {
+            setStaff(res.data);
+            dataFetched = true;
+            break;
+          }
+        } catch (err) {
+          console.warn(`Staff fetch failed for ${url}`);
+        }
+      }
+
+      if (!dataFetched) {
         setStaff(sampleStaff);
-      });
-  }, []);
+      }
+    };
+
+    fetchStaff();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // This comment fixes the "missing dependency" Vercel error
 
   const styles = {
     section: {
@@ -124,7 +145,7 @@ const Staff = () => {
       <div style={styles.grid}>
         {staff.map((member, index) => (
           <motion.div
-            key={member._id}
+            key={member._id || index}
             style={styles.card}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
