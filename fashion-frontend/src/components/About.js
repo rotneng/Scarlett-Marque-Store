@@ -79,7 +79,7 @@ const About = () => {
     content: {
       fontSize: "0.95rem",
       lineHeight: "1.8",
-      maxWidth: "500px",
+      maxWidth: "550px",
       opacity: 0.8,
     },
     signatureContainer: {
@@ -136,23 +136,25 @@ const About = () => {
             transition={{ duration: 1.2, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <span style={styles.label}>Est. 2026 — Archive</span>
+            <span style={styles.label}>EST. 2018 — OUR STORY</span>
             <h2 style={styles.heading}>
-              Craftsmanship <br />
-              <span style={{ fontWeight: "300" }}>Reimagined.</span>
+              Empowering the <br />
+              <span style={{ fontWeight: "300" }}>Female Form.</span>
             </h2>
 
             <div style={styles.content}>
               <p>
-                Born in the heart of the Design District, Scarlett Marque
-                represents a dialogue between traditional tailoring and
-                contemporary silhouette.
+                Scarlett Marque is a contemporary fashion house dedicated
+                exclusively to the art of female clothing. Our atelier is driven
+                by a single purpose: to define modern femininity through
+                structural precision and fluid movement.
               </p>
               <p style={{ marginTop: "15px" }}>
-                We do not believe in seasons. We believe in{" "}
-                <strong>permanence.</strong> Every piece is a testament to the
-                patient art of construction—utilizing only the finest ethically
-                sourced fabrics.
+                Moving beyond the constraints of seasonal trends, we craft
+                enduring silhouettes that celebrate strength and grace. Each
+                design is an architectural study of the female
+                silhouette—utilizing the world's finest textiles to create
+                garments that are as resilient as they are refined.
               </p>
             </div>
 
@@ -166,7 +168,7 @@ const About = () => {
                   display: "block",
                 }}
               >
-                LONDON / LAGOS
+                JOS, NIGERIA
               </span>
             </div>
           </motion.div>

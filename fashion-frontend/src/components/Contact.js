@@ -25,12 +25,12 @@ const Contact = () => {
       value: "thescarlettmarqueNg@gmail.com",
       url: "mailto:thescarlettmarqueNg@gmail.com",
     },
-     {
+    {
       label: "Facebook",
       value: "@_thescarlettmarque",
       url: "https://www.facebook.com/share/1Dq3x3bYRA/?mibextid=wwXIfr&u=https%3A%2F%2Fwww.facebook.com%2F_thescarlettmarque%2F",
     },
-     {
+    {
       label: "TikTok",
       value: "@scarlettmarque",
       url: "https://www.tiktok.com/@scarlettmarqueng?_t=ZM-8xfAh5tVWo4&_r=1",
