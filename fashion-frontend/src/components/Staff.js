@@ -64,8 +64,9 @@ const Staff = () => {
     };
 
     fetchStaff();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // This comment fixes the "missing dependency" Vercel error
+  }, []);
 
   const styles = {
     section: {

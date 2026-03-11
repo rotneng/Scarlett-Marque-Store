@@ -66,7 +66,6 @@ const FullProducts = () => {
     window.addEventListener("resize", handleResize);
 
     const fetchProducts = async () => {
-      // List of URLs to try: Render first, then Localhost
       const urls = [
         "https://scarlett-marque-store.onrender.com/api/products/all",
         "http://localhost:5000/api/products/all",
@@ -80,7 +79,7 @@ const FullProducts = () => {
           if (res.data && res.data.length > 0) {
             setProducts(res.data);
             dataFetched = true;
-            break; // Stop if we get data
+            break;
           }
         } catch (err) {
           console.warn(`Failed to fetch from ${url}, trying next...`);
@@ -96,6 +95,8 @@ const FullProducts = () => {
 
     fetchProducts();
     return () => window.removeEventListener("resize", handleResize);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const isMobile = windowWidth <= 768;
@@ -222,7 +223,7 @@ const FullProducts = () => {
             <div style={styles.grid}>
               {products.map((product, index) => (
                 <motion.div
-                  key={product._id}
+                  key={product._id || index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -232,7 +233,11 @@ const FullProducts = () => {
                     <motion.img
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                      src={product.images[0]}
+                      src={
+                        product.images && product.images[0]
+                          ? product.images[0]
+                          : "https://via.placeholder.com/600x800?text=No+Image"
+                      }
                       alt={product.name}
                       style={{
                         width: "100%",

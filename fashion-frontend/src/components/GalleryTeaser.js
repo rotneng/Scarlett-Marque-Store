@@ -60,8 +60,9 @@ const GalleryTeaser = () => {
     };
 
     fetchTeaser();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // The comment above fixes the Vercel build error
+  }, []);
 
   const styles = {
     section: {

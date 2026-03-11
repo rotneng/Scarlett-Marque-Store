@@ -21,6 +21,7 @@ const AddProduct = () => {
   }, []);
 
   const isMobile = windowWidth <= 768;
+
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -49,18 +50,38 @@ const AddProduct = () => {
       data.append("images", file);
     });
 
-    try {
-      await axios.post("http://localhost:5000/api/products/add", data);
-      alert("Piece successfully archived.");
+    // Dual-endpoint logic: Try Cloud first, then Localhost
+    const urls = [
+      "https://scarlett-marque-store.onrender.com/api/products/add",
+      "http://localhost:5000/api/products/add",
+    ];
+
+    let success = false;
+
+    for (const url of urls) {
+      try {
+        await axios.post(url, data);
+        success = true;
+        alert(
+          `Success: Archived via ${url.includes("render") ? "Cloud" : "Localhost"}`,
+        );
+        break;
+      } catch (err) {
+        console.warn(`Connection to ${url} failed.`);
+      }
+    }
+
+    if (success) {
       setFormData({ name: "", price: "", category: "", description: "" });
       setPreviews([]);
       setSelectedFiles([]);
-    } catch (err) {
-      console.error(err);
-      alert("Archive entry failed. Check backend connection.");
-    } finally {
-      setLoading(false);
+    } else {
+      alert(
+        "Archive entry failed. Please ensure Render is awake or Localhost is running.",
+      );
     }
+
+    setLoading(false);
   };
 
   const colors = {
