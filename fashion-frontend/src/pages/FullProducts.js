@@ -66,14 +66,32 @@ const FullProducts = () => {
     window.addEventListener("resize", handleResize);
 
     const fetchProducts = async () => {
-      try {
-        const res = await axios.get("http://localhost:5000/api/products/all");
-        setProducts(res.data.length > 0 ? res.data : sampleProducts);
-        setTimeout(() => setLoading(false), 1000);
-      } catch (err) {
-        setProducts(sampleProducts);
-        setLoading(false);
+      // List of URLs to try: Render first, then Localhost
+      const urls = [
+        "https://scarlett-marque-store.onrender.com/api/products/all",
+        "http://localhost:5000/api/products/all",
+      ];
+
+      let dataFetched = false;
+
+      for (const url of urls) {
+        try {
+          const res = await axios.get(url);
+          if (res.data && res.data.length > 0) {
+            setProducts(res.data);
+            dataFetched = true;
+            break; // Stop if we get data
+          }
+        } catch (err) {
+          console.warn(`Failed to fetch from ${url}, trying next...`);
+        }
       }
+
+      if (!dataFetched) {
+        setProducts(sampleProducts);
+      }
+
+      setTimeout(() => setLoading(false), 1000);
     };
 
     fetchProducts();

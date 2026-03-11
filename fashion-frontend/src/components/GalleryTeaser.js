@@ -17,40 +17,51 @@ const GalleryTeaser = () => {
       _id: "p1",
       name: "The Sculptural Blazer",
       images: [
-        "https://images.unsplash.com/photo-1598808503746-f34c53b9323e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGJsYXplcnxlbnwwfHwwfHx8MA%3D%3D",
+        "https://images.unsplash.com/photo-1598808503746-f34c53b9323e?w=500&auto=format&fit=crop&q=60",
       ],
     },
     {
       _id: "p2",
       name: "Atelier Silk Drape",
       images: [
-        "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1000",
       ],
     },
     {
       _id: "p3",
       name: "Structured Wool Overcoat",
       images: [
-        "https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?q=80&w=1000",
       ],
     },
   ];
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/products/all")
-      .then((res) => {
-        if (res.data && res.data.length > 0) {
-          setFeatured(res.data.slice(0, 3));
-        } else {
-          setFeatured(samples);
+    const fetchTeaser = async () => {
+      const urls = [
+        "https://scarlett-marque-store.onrender.com/api/products/all",
+        "http://localhost:5000/api/products/all",
+      ];
+
+      let success = false;
+      for (const url of urls) {
+        try {
+          const res = await axios.get(url);
+          if (res.data && res.data.length > 0) {
+            setFeatured(res.data.slice(0, 3));
+            success = true;
+            break;
+          }
+        } catch (err) {
+          console.warn(`Teaser fetch failed for ${url}`);
         }
-      })
-      .catch((err) => {
-        console.warn("Backend not reached, using samples.");
-        setFeatured(samples);
-      });
-  }, []);
+      }
+      if (!success) setFeatured(samples);
+    };
+
+    fetchTeaser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // The comment above fixes the Vercel build error
 
   const styles = {
     section: {
@@ -114,6 +125,7 @@ const GalleryTeaser = () => {
       padding: "20px 50px",
       border: `1px solid ${colors.brandGreen}`,
       color: colors.brandGreen,
+      backgroundColor: "transparent",
       textDecoration: "none",
       textTransform: "uppercase",
       letterSpacing: "4px",
@@ -148,9 +160,7 @@ const GalleryTeaser = () => {
             <div style={styles.imageWrapper}>
               <motion.img
                 src={
-                  product.images && product.images[0]
-                    ? product.images[0]
-                    : "https://via.placeholder.com/600x800"
+                  product.images?.[0] || "https://via.placeholder.com/600x800"
                 }
                 alt={product.name}
                 style={styles.image}
