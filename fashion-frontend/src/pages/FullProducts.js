@@ -96,7 +96,6 @@ const FullProducts = () => {
     fetchProducts();
     return () => window.removeEventListener("resize", handleResize);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const isMobile = windowWidth <= 768;
