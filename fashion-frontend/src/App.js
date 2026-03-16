@@ -17,41 +17,53 @@ import About from "./components/About";
 function App() {
   return (
     <Router>
-      <div className="App" style={{ backgroundColor: "#ffffff" }}>
+      <div
+        className="App"
+        style={{
+          backgroundColor: "#ffffff",
+          width: "100%",
+          overflowX: "hidden",
+          position: "relative",
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
         <Navbar />
+        <div style={{ flex: 1 }}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/products" element={<FullProducts />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/about" element={<About />} />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/products" element={<FullProducts />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/about" element={<About />} />
-
-          <Route
-            path="/admin/dashboard"
-            element={
-              <ProtectedRoute>
-                <AdminDashboard />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/add-product"
-            element={
-              <ProtectedRoute>
-                <AddProduct />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/add-staff"
-            element={
-              <ProtectedRoute>
-                <AddStaff />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
+            <Route
+              path="/admin/dashboard"
+              element={
+                <ProtectedRoute>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/add-product"
+              element={
+                <ProtectedRoute>
+                  <AddProduct />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/add-staff"
+              element={
+                <ProtectedRoute>
+                  <AddStaff />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </div>
 
         <Footer />
       </div>
