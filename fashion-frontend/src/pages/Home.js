@@ -11,15 +11,18 @@ const Home = () => {
   }, []);
 
   return (
-    <main style={{ backgroundColor: "#ffffff" }}>
+    <main
+      style={{
+        backgroundColor: "#ffffff",
+        width: "100%",
+        overflowX: "hidden",
+        position: "relative",
+      }}
+    >
       <Hero />
-
       <GalleryTeaser />
-
       <About />
-
       <Staff />
-
       <Contact />
     </main>
   );
