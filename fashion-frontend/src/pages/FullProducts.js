@@ -94,8 +94,9 @@ const FullProducts = () => {
     };
 
     fetchProducts();
-    return () => window.removeEventListener("resize", handleResize);
 
+    return () => window.removeEventListener("resize", handleResize);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const isMobile = windowWidth <= 768;
@@ -110,7 +111,10 @@ const FullProducts = () => {
       color: colors.brandGreen,
       fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
       paddingBottom: isMobile ? "80px" : "120px",
-      overflowX: "hidden",
+      overflowX: "hidden", // Fixes horizontal swipe white screen
+      width: "100%",
+      boxSizing: "border-box",
+      position: "relative",
     },
     topBar: {
       display: "flex",
@@ -126,11 +130,14 @@ const FullProducts = () => {
       textTransform: "uppercase",
       fontWeight: "300",
       margin: 0,
+      maxWidth: "100%",
+      wordBreak: "break-word",
     },
     grid: {
       display: "grid",
       gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
       gap: isMobile ? "60px" : "100px 50px",
+      width: "100%",
     },
     imgWrapper: {
       aspectRatio: "3/4",
