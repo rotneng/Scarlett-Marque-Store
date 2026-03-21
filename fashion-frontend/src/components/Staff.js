@@ -8,7 +8,8 @@ const Staff = () => {
   const colors = {
     brandGreen: "#003320",
     white: "#ffffff",
-    accent: "rgba(0, 51, 32, 0.1)",
+    stoneGrey: "#f2f2f2",
+    accent: "rgba(0, 51, 32, 0.05)",
   };
 
   const sampleStaff = [
@@ -63,17 +64,17 @@ const Staff = () => {
     };
 
     fetchStaff();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const styles = {
     section: {
       padding: "160px 8%",
-      backgroundColor: colors.white,
+      backgroundColor: colors.stoneGrey,
       color: colors.brandGreen,
       textAlign: "center",
       fontFamily: '"Helvetica Neue", sans-serif',
+      width: "100%",
+      boxSizing: "border-box",
     },
     label: {
       fontSize: "0.7rem",
@@ -104,8 +105,9 @@ const Staff = () => {
       width: "100%",
       aspectRatio: "4/5",
       overflow: "hidden",
-      backgroundColor: colors.accent,
+      backgroundColor: colors.white,
       marginBottom: "30px",
+      boxShadow: "0 15px 40px rgba(0,0,0,0.06)",
     },
     image: {
       width: "100%",
