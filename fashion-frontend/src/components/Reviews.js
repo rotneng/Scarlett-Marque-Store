@@ -36,21 +36,23 @@ const Reviews = () => {
   const colors = {
     brandGreen: "#003320",
     white: "#ffffff",
-    accent: "rgba(0, 51, 32, 0.03)",
+    sectionBg: "#fcfcf9",
   };
 
   const styles = {
     section: {
-      padding: "100px 8%",
-      backgroundColor: colors.white,
+      padding: "160px 8%",
+      backgroundColor: colors.sectionBg,
       color: colors.brandGreen,
       textAlign: "center",
       fontFamily: '"Helvetica Neue", sans-serif',
       overflow: "hidden",
+      width: "100%",
+      boxSizing: "border-box",
     },
     container: {
       position: "relative",
-      height: "250px",
+      height: "280px",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -69,17 +71,18 @@ const Reviews = () => {
       display: "flex",
       gap: "5px",
       justifyContent: "center",
-      marginBottom: "20px",
+      marginBottom: "25px",
     },
     quote: {
-      fontSize: "1.2rem",
+      fontSize: "1.3rem",
       lineHeight: "1.6",
       fontStyle: "italic",
-      marginBottom: "25px",
+      marginBottom: "30px",
       fontWeight: "300",
+      letterSpacing: "0.5px",
     },
     author: {
-      fontSize: "0.8rem",
+      fontSize: "0.85rem",
       letterSpacing: "3px",
       textTransform: "uppercase",
       fontWeight: "700",
@@ -95,17 +98,23 @@ const Reviews = () => {
   };
 
   return (
-    <section style={styles.section}>
-      <span style={styles.label}>Client Voices</span>
+    <section id="reviews" style={styles.section}>
+      <motion.span
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 0.6 }}
+        style={styles.label}
+      >
+        Client Voices
+      </motion.span>
 
       <div style={styles.container}>
         <AnimatePresence mode="wait">
           <motion.div
             key={testimonials[index].id}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
+            initial={{ opacity: 0, scale: 0.98, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 1.02, y: -10 }}
+            transition={{ duration: 0.9, ease: [0.19, 1, 0.22, 1] }}
             style={{ position: "absolute", width: "100%" }}
           >
             <div style={styles.stars}>
@@ -131,21 +140,25 @@ const Reviews = () => {
         style={{
           display: "flex",
           justifyContent: "center",
-          gap: "10px",
-          marginTop: "30px",
+          gap: "12px",
+          marginTop: "40px",
         }}
       >
         {testimonials.map((_, i) => (
-          <div
+          <motion.div
             key={i}
+            animate={{
+              opacity: i === index ? 1 : 0.2,
+              scale: i === index ? 1.2 : 1,
+            }}
             style={{
               width: "6px",
               height: "6px",
               borderRadius: "50%",
               backgroundColor: colors.brandGreen,
-              opacity: i === index ? 1 : 0.2,
-              transition: "opacity 0.5s ease",
+              cursor: "pointer",
             }}
+            onClick={() => setIndex(i)}
           />
         ))}
       </div>
