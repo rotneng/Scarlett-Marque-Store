@@ -6,7 +6,8 @@ const Contact = () => {
   const colors = {
     brandGreen: "#003320",
     white: "#ffffff",
-    border: "rgba(0, 51, 32, 0.15)",
+    sectionBg: "#f2f2f2",
+    border: "rgba(0, 51, 32, 0.1)",
   };
 
   const contactLinks = [
@@ -42,7 +43,7 @@ const Contact = () => {
     section: {
       width: "100%",
       minHeight: "100vh",
-      backgroundColor: colors.white,
+      backgroundColor: colors.sectionBg,
       color: colors.brandGreen,
       display: "flex",
       alignItems: "center",
@@ -127,6 +128,7 @@ const Contact = () => {
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
+          viewport={{ once: true }}
         >
           <span style={styles.label}>Private Client</span>
           <h2 style={styles.title}>
@@ -145,6 +147,7 @@ const Contact = () => {
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
+          viewport={{ once: true }}
         >
           {contactLinks.map((link, index) => (
             <motion.a
@@ -156,7 +159,7 @@ const Contact = () => {
               }}
               whileHover={{
                 paddingLeft: "20px",
-                backgroundColor: "rgba(0, 51, 32, 0.02)",
+                backgroundColor: "rgba(0, 51, 32, 0.03)",
               }}
             >
               <div>
