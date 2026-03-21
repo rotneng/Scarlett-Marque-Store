@@ -10,6 +10,7 @@ const GalleryTeaser = () => {
     brandGreen: "#003320",
     white: "#ffffff",
     lightGray: "#f4f4f4",
+    softSection: "#f2f2f2",
   };
 
   const samples = [
@@ -60,17 +61,18 @@ const GalleryTeaser = () => {
     };
 
     fetchTeaser();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const styles = {
     section: {
       padding: "160px 8%",
-      backgroundColor: colors.white,
+      backgroundColor: colors.softSection,
       color: colors.brandGreen,
       textAlign: "center",
       fontFamily: '"Helvetica Neue", sans-serif',
+      width: "100%",
+      boxSizing: "border-box",
+      borderTop: "1px solid rgba(0,0,0,0.03)",
     },
     titleWrapper: { marginBottom: "80px" },
     label: {
@@ -104,8 +106,9 @@ const GalleryTeaser = () => {
       width: "100%",
       aspectRatio: "3/4",
       overflow: "hidden",
-      backgroundColor: colors.lightGray,
+      backgroundColor: colors.white,
       marginBottom: "25px",
+      boxShadow: "0 15px 40px rgba(0,0,0,0.06)",
     },
     image: { width: "100%", height: "100%", objectFit: "cover" },
     productName: {

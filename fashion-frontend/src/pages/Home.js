@@ -24,8 +24,8 @@ const Home = () => {
       <GalleryTeaser />
       <About />
       <Staff />
-      <Contact />
       <Reviews />
+      <Contact />
     </main>
   );
 };
