@@ -4,6 +4,7 @@ import GalleryTeaser from "../components/GalleryTeaser";
 import Contact from "../components/Contact";
 import About from "../components/About";
 import Staff from "../components/Staff";
+import Reviews from "../components/Reviews";
 
 const Home = () => {
   useEffect(() => {
@@ -24,6 +25,7 @@ const Home = () => {
       <About />
       <Staff />
       <Contact />
+      <Reviews />
     </main>
   );
 };

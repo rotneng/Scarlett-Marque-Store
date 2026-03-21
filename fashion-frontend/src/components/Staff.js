@@ -37,7 +37,6 @@ const Staff = () => {
 
   useEffect(() => {
     const fetchStaff = async () => {
-      // Try Render first, then Localhost
       const urls = [
         "https://scarlett-marque-store.onrender.com/api/staff",
         "http://localhost:5000/api/staff",
