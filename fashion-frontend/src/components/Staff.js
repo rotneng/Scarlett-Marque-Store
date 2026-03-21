@@ -2,6 +2,31 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 
+// FIXED: Moved outside the component to resolve the dependency error
+const sampleStaff = [
+  {
+    _id: "s1",
+    name: "Julian Marque",
+    role: "Creative Director",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop",
+  },
+  {
+    _id: "s2",
+    name: "Elena Voss",
+    role: "Head of Tailoring",
+    image:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop",
+  },
+  {
+    _id: "s3",
+    name: "Marcus Chen",
+    role: "Textile Artisan",
+    image:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop",
+  },
+];
+
 const Staff = () => {
   const [staff, setStaff] = useState([]);
 
@@ -11,30 +36,6 @@ const Staff = () => {
     stoneGrey: "#f2f2f2",
     accent: "rgba(0, 51, 32, 0.05)",
   };
-
-  const sampleStaff = [
-    {
-      _id: "s1",
-      name: "Julian Marque",
-      role: "Creative Director",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop",
-    },
-    {
-      _id: "s2",
-      name: "Elena Voss",
-      role: "Head of Tailoring",
-      image:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop",
-    },
-    {
-      _id: "s3",
-      name: "Marcus Chen",
-      role: "Textile Artisan",
-      image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop",
-    },
-  ];
 
   useEffect(() => {
     const fetchStaff = async () => {
@@ -64,7 +65,7 @@ const Staff = () => {
     };
 
     fetchStaff();
-  }, []);
+  }, []); // The empty array is now valid because sampleStaff is outside the scope
 
   const styles = {
     section: {

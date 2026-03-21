@@ -3,6 +3,31 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion";
 
+// FIXED: Moved outside the component to resolve the dependency error
+const samples = [
+  {
+    _id: "p1",
+    name: "The Sculptural Blazer",
+    images: [
+      "https://images.unsplash.com/photo-1598808503746-f34c53b9323e?w=500&auto=format&fit=crop&q=60",
+    ],
+  },
+  {
+    _id: "p2",
+    name: "Atelier Silk Drape",
+    images: [
+      "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1000",
+    ],
+  },
+  {
+    _id: "p3",
+    name: "Structured Wool Overcoat",
+    images: [
+      "https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?q=80&w=1000",
+    ],
+  },
+];
+
 const GalleryTeaser = () => {
   const [featured, setFeatured] = useState([]);
 
@@ -12,30 +37,6 @@ const GalleryTeaser = () => {
     lightGray: "#f4f4f4",
     softSection: "#f2f2f2",
   };
-
-  const samples = [
-    {
-      _id: "p1",
-      name: "The Sculptural Blazer",
-      images: [
-        "https://images.unsplash.com/photo-1598808503746-f34c53b9323e?w=500&auto=format&fit=crop&q=60",
-      ],
-    },
-    {
-      _id: "p2",
-      name: "Atelier Silk Drape",
-      images: [
-        "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1000",
-      ],
-    },
-    {
-      _id: "p3",
-      name: "Structured Wool Overcoat",
-      images: [
-        "https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?q=80&w=1000",
-      ],
-    },
-  ];
 
   useEffect(() => {
     const fetchTeaser = async () => {
@@ -61,7 +62,7 @@ const GalleryTeaser = () => {
     };
 
     fetchTeaser();
-  }, []);
+  }, []); // Empty array is now safe
 
   const styles = {
     section: {
