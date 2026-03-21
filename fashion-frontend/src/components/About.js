@@ -14,24 +14,27 @@ const About = () => {
     brandGreen: "#003320",
     white: "#ffffff",
     accentGray: "#f4f4f4",
+    aboutBg: "#f9f8f4",
   };
 
   const styles = {
     section: {
-      padding: isMobile ? "80px 6%" : "140px 8%",
-      backgroundColor: colors.white,
+      padding: isMobile ? "100px 6%" : "160px 8%",
+      backgroundColor: colors.aboutBg, 
       color: colors.brandGreen,
       fontFamily: '"Helvetica Neue", sans-serif',
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
       overflow: "hidden",
+      width: "100%",
+      boxSizing: "border-box",
     },
     rowContainer: {
       display: "flex",
       flexDirection: isMobile ? "column" : "row",
       alignItems: isMobile ? "center" : "flex-start",
-      gap: isMobile ? "50px" : "80px",
+      gap: isMobile ? "60px" : "100px",
       maxWidth: "1100px",
       width: "100%",
     },
@@ -45,7 +48,8 @@ const About = () => {
       width: "100%",
       aspectRatio: "3/4",
       overflow: "hidden",
-      backgroundColor: colors.accentGray,
+      backgroundColor: colors.white, 
+      boxShadow: "0 20px 40px rgba(0,0,0,0.04)",
     },
     image: {
       width: "100%",
@@ -101,8 +105,8 @@ const About = () => {
       <div style={styles.rowContainer}>
         <motion.div
           style={styles.imageWrapper}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -30 }} 
+          whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.2 }}
           viewport={{ once: true }}
         >
@@ -116,7 +120,7 @@ const About = () => {
           <span
             style={{
               position: "absolute",
-              bottom: "-30px",
+              bottom: "-35px",
               left: isMobile ? "50%" : "0",
               transform: isMobile ? "translateX(-50%)" : "none",
               fontSize: "0.55rem",
@@ -131,8 +135,8 @@ const About = () => {
 
         <div style={styles.textSide}>
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 30 }} 
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.2, delay: 0.2 }}
             viewport={{ once: true }}
           >
