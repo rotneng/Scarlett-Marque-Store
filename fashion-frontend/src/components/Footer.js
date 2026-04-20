@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-// FIXED: Changed 'lucide-material' to 'lucide-react'
-import { Instagram, Facebook, MessageCircle, Music2 } from "lucide-react"; 
+import { Instagram, Facebook, MessageCircle, Music2 } from "lucide-react";
 
 const Footer = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -14,18 +13,22 @@ const Footer = () => {
   const isMobile = windowWidth <= 768;
 
   const colors = {
-    brandGreen: "#003320",
+    footerBg: "#111111",
     white: "#ffffff",
-    muted: "rgba(255, 255, 255, 0.6)",
+    muted: "rgba(255, 255, 255, 0.5)",
   };
 
   const styles = {
     footer: {
-      backgroundColor: colors.brandGreen,
+      backgroundColor: colors.footerBg,
       color: colors.white,
-      padding: isMobile ? "60px 5% 30px" : "80px 8% 40px",
+      padding: isMobile ? "60px 5% 40px" : "100px 8% 40px",
       fontFamily: '"Helvetica Neue", sans-serif',
-      borderTop: "1px solid rgba(255,255,255,0.1)",
+      borderTop: "1px solid rgba(255,255,255,0.05)",
+      width: "100%",
+      display: "block",
+      boxSizing: "border-box",
+      margin: 0,
     },
     container: {
       display: "grid",
@@ -42,40 +45,42 @@ const Footer = () => {
     logoText: {
       fontSize: "1.2rem",
       fontWeight: "800",
-      letterSpacing: "4px",
+      letterSpacing: "5px",
       textTransform: "uppercase",
     },
     addressText: {
-      fontSize: "0.85rem",
-      lineHeight: "1.6",
+      fontSize: "0.8rem",
+      lineHeight: "1.8",
       color: colors.muted,
       letterSpacing: "1px",
     },
     heading: {
-      fontSize: "0.9rem",
+      fontSize: "0.75rem",
       fontWeight: "700",
       textTransform: "uppercase",
-      letterSpacing: "2px",
+      letterSpacing: "3px",
       marginBottom: "20px",
     },
     socialContainer: {
       display: "flex",
-      gap: "20px",
+      gap: "25px",
       justifyContent: isMobile ? "center" : "flex-start",
     },
     socialIcon: {
       color: colors.white,
       transition: "opacity 0.3s ease",
       cursor: "pointer",
+      opacity: 0.7,
     },
     copyright: {
       textAlign: "center",
-      fontSize: "0.7rem",
+      fontSize: "0.65rem",
       letterSpacing: "2px",
       color: colors.muted,
       textTransform: "uppercase",
       borderTop: "1px solid rgba(255,255,255,0.05)",
       paddingTop: "30px",
+      margin: 0,
     },
   };
 
@@ -90,7 +95,13 @@ const Footer = () => {
             <br />
             Lagos, Nigeria
             <br />
-            <span style={{ marginTop: "10px", display: "block" }}>
+            <span
+              style={{
+                marginTop: "15px",
+                display: "block",
+                color: colors.white,
+              }}
+            >
               thescarlettmarqueNg@gmail.com
             </span>
           </div>
@@ -115,34 +126,40 @@ const Footer = () => {
               target="_blank"
               rel="noreferrer"
               style={styles.socialIcon}
+              onMouseOver={(e) => (e.currentTarget.style.opacity = "1")}
+              onMouseOut={(e) => (e.currentTarget.style.opacity = "0.7")}
             >
-              <Instagram size={22} />
+              <Instagram size={20} strokeWidth={1.5} />
             </a>
             <a
               href="https://www.facebook.com/share/1Dq3x3bYRA/?mibextid=wwXIfr&u=https%3A%2F%2Fwww.facebook.com%2F_thescarlettmarque%2F"
               target="_blank"
               rel="noreferrer"
               style={styles.socialIcon}
+              onMouseOver={(e) => (e.currentTarget.style.opacity = "1")}
+              onMouseOut={(e) => (e.currentTarget.style.opacity = "0.7")}
             >
-              <Facebook size={22} />
+              <Facebook size={20} strokeWidth={1.5} />
             </a>
-            {/* TikTok Link */}
             <a
               href="https://tiktok.com/@scarlettmarqueng"
               target="_blank"
               rel="noreferrer"
               style={styles.socialIcon}
+              onMouseOver={(e) => (e.currentTarget.style.opacity = "1")}
+              onMouseOut={(e) => (e.currentTarget.style.opacity = "0.7")}
             >
-              <Music2 size={22} />
+              <Music2 size={20} strokeWidth={1.5} />
             </a>
-            {/* WhatsApp Link */}
             <a
               href="https://wa.me/2349036830073"
               target="_blank"
               rel="noreferrer"
               style={styles.socialIcon}
+              onMouseOver={(e) => (e.currentTarget.style.opacity = "1")}
+              onMouseOut={(e) => (e.currentTarget.style.opacity = "0.7")}
             >
-              <MessageCircle size={22} />
+              <MessageCircle size={20} strokeWidth={1.5} />
             </a>
           </div>
         </div>

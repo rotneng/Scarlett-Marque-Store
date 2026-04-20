@@ -14,6 +14,7 @@ const Navbar = () => {
   const colors = {
     brandGreen: "#003320",
     white: "#ffffff",
+    brandBlack: "#000000",
   };
 
   useEffect(() => {
@@ -30,6 +31,9 @@ const Navbar = () => {
 
   const isMobile = windowWidth <= 768;
   const isTablet = windowWidth > 768 && windowWidth <= 1100;
+
+  const activeTextColor =
+    scrolled || mobileOpen ? colors.white : colors.brandBlack;
 
   const styles = {
     nav: {
@@ -61,13 +65,14 @@ const Navbar = () => {
       objectFit: "contain",
     },
     brandName: {
-      color: colors.white,
+      color: activeTextColor,
       fontSize: isMobile ? "0.9rem" : isTablet ? "1rem" : "1.3rem",
       fontWeight: "700",
       letterSpacing: isTablet ? "1px" : "3px",
       textTransform: "uppercase",
       margin: 0,
       whiteSpace: "nowrap",
+      transition: "color 0.4s ease",
     },
     navLinks: {
       display: isMobile ? (mobileOpen ? "flex" : "none") : "flex",
@@ -86,7 +91,7 @@ const Navbar = () => {
       padding: 0,
     },
     link: {
-      color: colors.white,
+      color: isMobile ? colors.white : activeTextColor,
       textDecoration: "none",
       fontSize: isMobile ? "1.5rem" : isTablet ? "0.7rem" : "0.8rem",
       textTransform: "uppercase",
@@ -94,11 +99,12 @@ const Navbar = () => {
       cursor: "pointer",
       opacity: 0.9,
       whiteSpace: "nowrap",
+      transition: "color 0.4s ease",
     },
     shopBtn: {
-      border: `1px solid ${colors.white}`,
+      border: `1px solid ${isMobile ? colors.white : activeTextColor}`,
       padding: isTablet ? "8px 12px" : "10px 20px",
-      color: colors.white,
+      color: isMobile ? colors.white : activeTextColor,
       textDecoration: "none",
       fontSize: isTablet ? "0.7rem" : "0.8rem",
       fontWeight: "bold",
@@ -124,7 +130,7 @@ const Navbar = () => {
       {isMobile && (
         <div
           onClick={() => setMobileOpen(!mobileOpen)}
-          style={{ cursor: "pointer", zIndex: 1001, color: colors.white }}
+          style={{ cursor: "pointer", zIndex: 1001, color: activeTextColor }}
         >
           {mobileOpen ? <X size={30} /> : <Menu size={30} />}
         </div>
