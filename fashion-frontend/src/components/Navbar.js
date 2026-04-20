@@ -12,7 +12,7 @@ const Navbar = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const colors = {
-    brandGreen: "#003320",
+    brandBlackBg: "#111111", // Changed from Green to match Footer Black
     white: "#ffffff",
     brandBlack: "#000000",
   };
@@ -48,7 +48,7 @@ const Navbar = () => {
       zIndex: 1000,
       transition: "all 0.4s ease",
       backgroundColor:
-        scrolled || mobileOpen ? colors.brandGreen : "transparent",
+        scrolled || mobileOpen ? colors.brandBlackBg : "transparent",
       borderBottom: scrolled ? `1px solid rgba(255,255,255,0.1)` : "none",
       boxSizing: "border-box",
     },
@@ -82,7 +82,7 @@ const Navbar = () => {
       left: 0,
       width: isMobile ? "100%" : "auto",
       height: isMobile ? "calc(100vh - 70px)" : "auto",
-      backgroundColor: isMobile ? colors.brandGreen : "transparent",
+      backgroundColor: isMobile ? colors.brandBlackBg : "transparent",
       alignItems: "center",
       justifyContent: isMobile ? "center" : "flex-end",
       gap: isMobile ? "40px" : isTablet ? "15px" : "30px",
